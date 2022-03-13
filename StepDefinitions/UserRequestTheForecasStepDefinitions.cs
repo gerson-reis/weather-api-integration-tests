@@ -1,4 +1,3 @@
-using Newtonsoft.Json;
 using NUnit.Framework;
 using RestSharp;
 using System.Net;
@@ -28,11 +27,11 @@ namespace weather.Integrations.Tests.StepDefinitions
                          .SetResourse("/api/get-forecast-from?address=4600 Silver Hill Rd, Washington, DC 20233")
                          .AddParameter("address", address);
 
-            var _restResponse = new RestResponse();
-            _restResponse = request.Execute();
+            var restResponse = new RestResponse();
+            restResponse = request.Execute();
 
-            Assert.AreEqual(HttpStatusCode.OK, _restResponse.StatusCode);
-            contentResult = _restResponse.Content;
+            Assert.AreEqual(HttpStatusCode.OK, restResponse.StatusCode);
+            contentResult = restResponse.Content;
         }
 
         [Then(@"the forecast endpoint is called and return the result")]
